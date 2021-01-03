@@ -45,6 +45,25 @@ app.get('/books/:id', function(req, res){
         })    
 });
 
+app.post('/books', function(req, res){
+    console.log('Creating a new book!');
+
+    var newBook = new Book();
+
+    newBook.title = req.body.title;
+    newBook.author = req.body.author;
+    newBook.category = req.body.category;
+
+    newBook.save(function(err, book){
+        if (err){
+            res.send('Error has occured');
+        } else {
+            console.log(book);
+            res.json(books);
+        }
+    })
+});
+
 var port = 8080;
 
 app.listen(port, function(){
