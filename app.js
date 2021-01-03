@@ -8,6 +8,11 @@ var db = 'mongodb://localhost/example';
 
 mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true});
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
 app.get('/', function(req, res){
     res.send('We got this!');
 });
