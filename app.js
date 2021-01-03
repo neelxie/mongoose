@@ -5,4 +5,6 @@ var mongoose = require('mongoose');
 
 var port = 8080;
 
-app.listen
+app.listen(port, function(){
+    console.log('App listening on port 8080');
+})
