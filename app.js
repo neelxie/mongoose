@@ -56,10 +56,10 @@ app.post('/books', function(req, res){
 
     newBook.save(function(err, book){
         if (err){
-            res.send('Error has occured');
+            res.send('Error has occured while saving book');
         } else {
             console.log(book);
-            res.json(books);
+            res.send(book);
         }
     })
 });
