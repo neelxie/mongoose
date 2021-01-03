@@ -15,6 +15,14 @@ app.get('/', function(req, res){
 app.get('/books', function(req, res){
     console.log('Getting all books!');
     Book.find({})
+        exec(function(err, books){
+            if (err){
+                res.send('Error has occured');
+            } else {
+                console.log(books);
+                res.json(books);
+            }
+        })
 });
 
 var port = 8080;
