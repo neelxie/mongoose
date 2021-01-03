@@ -6,7 +6,16 @@ var Book = require('./Book.model');
 
 var db = 'mongodb://localhost/example';
 
-mongoose.connect(db);
+mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true});
+
+app.get('/', function(req, res){
+    res.send('We got this!');
+});
+
+app.get('/books', function(req, res){
+    console.log('Getting all books!');
+    Book.find({})
+});
 
 var port = 8080;
 
