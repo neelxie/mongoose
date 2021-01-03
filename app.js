@@ -15,7 +15,7 @@ app.get('/', function(req, res){
 app.get('/books', function(req, res){
     console.log('Getting all books!');
     Book.find({})
-        exec(function(err, books){
+        .exec(function(err, books){
             if (err){
                 res.send('Error has occured');
             } else {
@@ -23,6 +23,21 @@ app.get('/books', function(req, res){
                 res.json(books);
             }
         })
+});
+
+app.get('/books/:id', function(req, res){
+    console.log('Getting one book!');
+    Book.findOne({
+        _id: req.params.id
+    })
+        .exec(function(err, book){
+            if (err){
+                res.send('Error has occured');
+            } else {
+                console.log(book);
+                res.json(book);
+            }
+        })    
 });
 
 var port = 8080;
