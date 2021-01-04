@@ -64,6 +64,21 @@ app.post('/books', function(req, res){
     })
 });
 
+app.put('/books/:id', function(req, res){
+    console.log('Getting one book!');
+    Book.findOneAndUpdate({
+        _id: req.params.id
+    }, {$set: {}})
+        .exec(function(err, book){
+            if (err){
+                res.send('Error has occured');
+            } else {
+                console.log(book);
+                res.json(book);
+            }
+        })    
+});
+
 var port = 8080;
 
 app.listen(port, function(){
