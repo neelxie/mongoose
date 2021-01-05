@@ -37,7 +37,7 @@ app.get('/books/:id', function(req, res){
     })
         .exec(function(err, book){
             if (err){
-                res.send('Error has occured');
+                res.send('Error has occured while retrieving book');
             } else {
                 console.log(book);
                 res.json(book);
